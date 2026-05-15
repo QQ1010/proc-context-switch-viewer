@@ -28,6 +28,11 @@ static void print_sample(const ProcSample samples[], int count) {
 }
 
 static bool is_pid(const char *name) {
+    // check null string
+    if(*name == '\0') {
+        return false;
+    }
+    
     // check is digit
     while(*name) {
         if(!isdigit(*name)) {
