@@ -91,7 +91,6 @@ static int scan_proc(ProcSample samples[], int max_samples) {
     struct dirent *entry;
     int count = 0;
     while((entry = readdir(dir)) != NULL) {
-        printf("%s", entry->d_name);
         if(!is_pid(entry->d_name)) {
             continue;
         }
