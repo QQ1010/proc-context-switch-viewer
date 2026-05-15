@@ -28,6 +28,7 @@ static void print_sample(const ProcSample samples[], int count) {
 }
 
 static bool is_pid(const char *name) {
+    // check is digit
     while(*name) {
         if(!isdigit(*name)) {
             return false;
@@ -54,6 +55,7 @@ static bool read_proc_status(int pid, ProcSample *sample) {
     sample->voluntary = 0;
     sample->nonvoluntary = 0;
 
+    // split info and get needed info
     char line[256];
     while(fgets(line, sizeof(line), fp)) {
         if(strncmp(line, "Name:", 5) == 0) {
@@ -88,6 +90,7 @@ static int scan_proc(ProcSample samples[], int max_samples) {
         return 0;
     }
 
+    // check valid pid and read status
     struct dirent *entry;
     int count = 0;
     while((entry = readdir(dir)) != NULL) {
