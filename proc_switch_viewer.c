@@ -35,7 +35,7 @@ static bool is_pid(const char *name) {
     
     // check is digit
     while(*name) {
-        if(!isdigit(*name)) {
+        if(!isdigit((unsigned char)*name)) {
             return false;
         }
         name ++;
